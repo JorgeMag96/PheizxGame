@@ -1,9 +1,11 @@
 sourceCompatibility = 11
-sourceSets.main.java.srcDirs = [ "src/" ]
-sourceSets.main.resources.srcDirs = ["../assets"]
+sourceSets.main.java.srcDirs = [ 'src/' ]
+sourceSets.main.resources.srcDirs = ['../assets']
 
-project.ext.mainClassName = "com.mygdx.game.DesktopLauncher"
-project.ext.assetsDir = new File("../assets")
+ext {
+    mainClassName = 'com.pheizx.game.DesktopLauncher'
+    assetsDir = new File('../assets')
+}
 
 import org.gradle.internal.os.OperatingSystem
 
@@ -34,7 +36,7 @@ task debug(dependsOn: classes, type: JavaExec) {
     }
 }
 
-task dist(type: Jar) {
+task dist(dependsOn: classes, type: Jar) {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     manifest {
         attributes 'Main-Class': project.mainClassName
@@ -45,6 +47,3 @@ task dist(type: Jar) {
     }
     with jar
 }
-
-
-dist.dependsOn classes
