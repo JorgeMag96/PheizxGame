@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Pheizx");
 		config.setWindowedMode(800, 600);
-		new Lwjgl3Application(new Game(), config);
+		new Lwjgl3Application(new PheizxGame(), config);
 	}
 }
